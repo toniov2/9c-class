@@ -1,0 +1,73 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+    --accent: #00f2fe;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: #0b0e14;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Эффектный фон */
+.background-shapes {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+}
+.shape { position: absolute; filter: blur(100px); border-radius: 50%; opacity: 0.4; }
+.shape-1 { width: 500px; height: 500px; background: #4facfe; top: -10%; left: -10%; }
+.shape-2 { width: 400px; height: 400px; background: #8e2de2; bottom: -5%; right: -5%; }
+
+/* Стекло */
+.glass-header, .glass-card, .glass-btn, .glass-overlay {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: var(--glass-border);
+    border-radius: 20px;
+}
+
+.glass-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 40px; margin: 20px; position: sticky; top: 20px; z-index: 1000;
+}
+
+.glass-btn {
+    color: white; padding: 10px 20px; border: 1px solid transparent;
+    cursor: pointer; transition: 0.3s; font-family: inherit; margin: 0 5px;
+}
+
+.glass-btn:hover, .active-btn {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+main { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+section { display: none; animation: fadeIn 0.5s ease forwards; }
+.active-section { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.grid-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+}
+
+.student-card { text-align: center; padding: 40px 20px; }
+.avatar { font-size: 50px; margin-bottom: 15px; }
+
+.section-title { text-align: center; margin-bottom: 30px; font-size: 2rem; color: var(--accent); }
+
+/* Игры */
+.game-selector { text-align: center; margin-bottom: 20px; }
+.game-wrapper { position: relative; width: 100%; border-radius: 20px; overflow: hidden; }
+canvas { display: block; width: 100%; background: #000; }
+.glass-overlay {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    padding: 40px; text-align: center; width: 70%;
+}
+.hidden { display: none !important; }
